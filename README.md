@@ -1,37 +1,43 @@
 # 🎵 Lyrics Printer
 
-A Python terminal tool that prints song lyrics **beautifully** using ANSI escape codes — rich colors, animations, and styled typography, right in your terminal.
-
-Inspired by the vibe of coding-in-style content creators.
+A Python terminal tool that prints song lyrics **beautifully** using ANSI escape codes — rich colors, hearts, sparkles, music notes, animations, and styled typography, right in your terminal.
 
 ---
 
 ## ✨ Features
 
-- **Gradient color cycling** — each lyric line glows in a different rich color
-- **Typewriter effect** — characters appear one by one for dramatic feel
-- **Fade-in effect** — lines slide into view progressively
-- **Centered layout** — lyrics are centered like a stage display
-- **Custom color palette** — Deep Red, Soul Purple, Warm Gold, Mist White, Rose Pink, Sky Blue & more
-- **Configurable line delay** — control the pace of lyric display
-- **Plug-in your own song** — just fill in title, artist, and lyrics
+- **5 themes** — Romantic, Sad, Neon, Golden, Devotional, Gradient
+- **Hearts & symbols** — ♥ ♡ ❥ ✨ ★ ✦ ♫ ♪ ✿ ◆ in headers & footers
+- **Section labels** — tag lines with `#Chorus`, `#Verse 1`, `#Bridge` etc.
+- **4 display styles** — Gradient, Typing, Fade, Static
+- **Gradient color cycling** per theme
+- **Centered layout** with 62-char stage width
+- **Configurable line delay** — control the pace
+- **6 ready-to-use song templates** — just paste your lyrics
 
 ---
 
-## 🖥️ Preview
+## 🖥️ Preview (Romantic Theme)
 
 ```
-════════════════════════════════════════════════════════════
-                    ♪  Rag Rag  ♪
-                   — Gajendra Verma —
-════════════════════════════════════════════════════════════
+══════════════════════════════════════════════════════════════
+                      ♥  Rag Rag  ❥
+                    — Gajendra Verma —
+══════════════════════════════════════════════════════════════
+
+                 [ ♥ Verse 1 ❥ ]
 
               Rag rag woh samaya mere...
-                       Rag Rag
+                      Rag Rag
+
+                 [ ♥ Chorus ❥ ]
 
               Rag rag woh samaya mere...
 
-            Har pal tujhe hi dhundhta hoon main
+──────────────────────────────────────────────────────────────
+                   ❥  ♥  ❥  ♥  ❥
+                    end of lyrics
+──────────────────────────────────────────────────────────────
 ```
 
 ---
@@ -39,72 +45,100 @@ Inspired by the vibe of coding-in-style content creators.
 ## 🚀 Quick Start
 
 ```bash
-# Clone the repo
 git clone https://github.com/subhobhai943/lyrics-printer.git
 cd lyrics-printer
-
-# Run the demo song
 python lyrics_printer.py
 ```
 
-No dependencies required — pure Python standard library.
+No dependencies — pure Python standard library.
 
 ---
 
-## 🎨 Display Styles
+## 🎨 Themes
 
-Change the `style` parameter in `print_lyrics()` to switch look:
+| Theme | Colors | Best For | Symbols |
+|---|---|---|---|
+| `gradient` | Red → Purple → Gold → Pink → Blue | General | ♪ ♫ |
+| `romantic` | Rose Pink → Deep Red → Warm Gold | Love songs | ♥ ❥ |
+| `sad` | Soul Purple → Sky Blue → Lilac | Sad songs | ♡ ☆ |
+| `neon` | Sky Blue → Mint → Rose Pink | Lo-fi / Pop | ✦ ✨ |
+| `golden` | Warm Gold → Dusk Orange | Classic | ★ ◆ |
+| `devotional` | Gold → Orange → Pink | Bhajans | ✿ ✤ |
 
-| Style | Description |
+---
+
+## 🎭 Display Styles
+
+| Style | Effect |
 |---|---|
-| `'gradient'` | Cycles through vibrant ANSI colors (default) |
-| `'typing'` | Typewriter character-by-character effect |
-| `'fade'` | Progressive line reveal |
-| `'static'` | Clean, single-color white |
+| `'gradient'` | Each line cycles through theme colors |
+| `'typing'` | Typewriter character-by-character |
+| `'fade'` | Line progressively reveals left to right |
+| `'static'` | Clean single-color white |
+
+---
+
+## 🎵 Section Labels
+
+Tag any line with `#` to render it as a decorated section label:
 
 ```python
-print_lyrics(lines, style='typing', line_delay=1.2)
+LYRICS = """
+#Verse 1
+First line here
+Second line here
+
+#Chorus
+Chorus line here
+"""
+```
+
+This prints as:
+```
+           [ ♥ Verse 1 ❥ ]
+
+        First line here
+        Second line here
+
+           [ ♥ Chorus ❥ ]
 ```
 
 ---
 
-## 🎵 Add Your Own Song
+## 📁 Song Templates
 
-1. Copy `songs/example_song.py`
-2. Fill in `SONG_TITLE`, `SONG_ARTIST`, and `LYRICS`
-3. Run it:
+| File | Theme | Style | Use For |
+|---|---|---|---|
+| `songs/sahiba_template.py` | romantic | fade | Romantic Hindi songs |
+| `songs/romantic_song_template.py` | romantic | gradient | Love songs |
+| `songs/sad_song_template.py` | sad | typing | Sad / emotional songs |
+| `songs/devotional_template.py` | devotional | fade | Bhajans / devotional |
+| `songs/neon_lofi_template.py` | neon | typing | Lo-fi / pop tracks |
+| `songs/example_song.py` | gradient | gradient | General purpose |
 
-```bash
-python songs/my_song.py
-```
+To use any template:
+1. Open the file
+2. Set `SONG_TITLE` and `SONG_ARTIST`
+3. Paste your lyrics into the `LYRICS` string
+4. Add `#Chorus`, `#Verse 1` etc. for section labels
+5. Run: `python songs/sahiba_template.py`
 
 ---
 
-## 🎨 Color Palette
+## 🎨 Symbol Reference
 
 ```python
-DEEP_RED    = '\033[38;5;88m'
-SOUL_PURPLE = '\033[38;5;54m'
-WARM_GOLD   = '\033[38;5;136m'
-MIST_WHITE  = '\033[38;5;251m'
-ROSE_PINK   = '\033[38;5;211m'
-SKY_BLUE    = '\033[38;5;75m'
-SAGE_GREEN  = '\033[38;5;65m'
-DUSK_ORANGE = '\033[38;5;172m'
-```
-
-Customize any color using [256-color ANSI codes](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit).
-
----
-
-## 📁 Project Structure
-
-```
-lyrics-printer/
-├── lyrics_printer.py   # Core engine: colors, effects, printing
-├── songs/
-│   └── example_song.py # Template for adding your own songs
-└── README.md
+HEART        = '♥'   # Full heart
+HEART_OPEN   = '♡'   # Open heart
+HEART_RIBBON = '❥'   # Ribbon heart
+SPARKLE      = '✨'   # Sparkle
+STAR         = '★'   # Filled star
+STAR_OPEN    = '☆'   # Open star
+SPARK        = '✦'   # 4-point spark
+NOTE         = '♫'   # Double note
+NOTE2        = '♪'   # Single note
+FLOWER       = '✿'   # Flower
+DIAMOND      = '◆'   # Diamond
 ```
 
 ---
@@ -112,7 +146,7 @@ lyrics-printer/
 ## 📌 Requirements
 
 - Python 3.6+
-- A terminal that supports ANSI escape codes (Linux, macOS, Windows Terminal)
+- A terminal with ANSI support (Linux, macOS, Windows Terminal)
 
 ---
 
