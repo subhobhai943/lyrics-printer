@@ -111,6 +111,18 @@ def print_section_label(label: str, theme: str = 'gradient'):
     time.sleep(0.3)
 
 
+def _parse_line_delay(text: str, default: float):
+    """
+    If *text* ends with  ~X.X  (e.g.  ~2.5), strip that marker and
+    return (cleaned_text, per_line_delay).  Otherwise return (text, default).
+    """
+    import re
+    m = re.search(r'\s*~(\d+(?:\.\d+)?)\s*$', text)
+    if m:
+        return text[:m.start()], float(m.group(1))
+    return text, default
+
+
 def print_lyrics(
     lines: list,
     style: str = 'gradient',
@@ -129,6 +141,11 @@ def print_lyrics(
 
     heart_chorus: if True, wraps lines starting with a # tag as section labels.
       Use  #Chorus  or  #Verse 1  as the first word of a line.
+
+    Per-line timing:
+      Append  ~X.X  (e.g. ~2.5) at the end of any lyric line to override
+      the default line_delay for that specific line.  The marker is stripped
+      before the line is displayed.
     """
     palette = THEMES.get(theme, THEMES['gradient'])
     color_index = 0
@@ -143,9 +160,15 @@ def print_lyrics(
 
         # Section tag: lines like "#Chorus" or "#Verse 1"
         if heart_chorus and stripped.startswith('#'):
-            print_section_label(stripped[1:].strip(), theme=theme)
+            # Section tags can also carry a pause: #Chorus ~3.0
+            label, section_pause = _parse_line_delay(stripped[1:].strip(), 0.3)
+            print_section_label(label.strip(), theme=theme)
             print()
+            time.sleep(section_pause)
             continue
+
+        # Check for per-line delay marker  ~X.X
+        stripped, delay = _parse_line_delay(stripped, line_delay)
 
         color = palette[color_index % len(palette)]
         color_index += 1
@@ -160,7 +183,7 @@ def print_lyrics(
         else:
             print(color + BOLD + centered + RESET)
 
-        time.sleep(line_delay)
+        time.sleep(delay)
 
 
 def print_footer(theme: str = 'gradient'):

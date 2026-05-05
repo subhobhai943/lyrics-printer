@@ -23,56 +23,56 @@ THEME       = 'romantic'
 # Use  #Chorus ,  #Verse 1 ,  #Bridge  etc. as section markers.
 # Leave a blank line between sections for a natural pause.
 LYRICS = """
-#Verse 1
-Sahiba, aaye ghar kaahe na
-Aise toh sataye na
-Dekhun tujhko chain aata hai
-Sahiba, neende-veende aaye na
-Raatein kaati jaaye na
-Tera hi khayal din-rain aata hai
+#Verse 1 ~4.0
+Sahiba, aaye ghar kaahe na ~3.5
+Aise toh sataye na ~3.0
+Dekhun tujhko chain aata hai ~4.0
+Sahiba, neende-veende aaye na ~3.5
+Raatein kaati jaaye na ~3.0
+Tera hi khayal din-rain aata hai ~5.0
 
-#Chorus
-Sahiba, samundar, meri aankhon mein reh gaye
-Hum aate-aate jaana, teri yaadon mein reh gaye
-Ye palke gawaahi hai, hum raaton mein reh gaye
-Jo vaade kiye saare, bas baaton mein reh gaye
+#Chorus ~3.0
+Sahiba, samundar, meri aankhon mein reh gaye ~3.5
+Hum aate-aate jaana, teri yaadon mein reh gaye ~3.5
+Ye palke gawaahi hai, hum raaton mein reh gaye ~3.5
+Jo vaade kiye saare, bas baaton mein reh gaye ~5.0
 
-#Verse 2
-Baaton-baaton mein hi, khwabon-khwabon mein hi mere qareeb hai tu
-Teri talab mujhko, teri talab, jaana, ho tu kabhi rubaru
-Shor-sharaaba, baaba, jo seene mein hai mere
-Kaise bayaan main karun
-Haal jo mera hai, main kisko bataun
-Mere Sahiba!
+#Verse 2 ~3.5
+Baaton-baaton mein hi, khwabon-khwabon mein hi mere qareeb hai tu ~4.0
+Teri talab mujhko, teri talab, jaana, ho tu kabhi rubaru ~4.0
+Shor-sharaaba, baaba, jo seene mein hai mere ~3.5
+Kaise bayaan main karun ~3.0
+Haal jo mera hai, main kisko bataun ~3.5
+Mere Sahiba! ~5.0
 
-#Verse 3
-Dil na kiraye ka, thoda toh sambhalo na
-Naazuk hai yeh, toot jaata hai
-Sahiba, neende-veende aaye na
-Raatein kaati jaaye na
-Tera hi khayal din-rain aata hai
+#Verse 3 ~3.5
+Dil na kiraye ka, thoda toh sambhalo na ~3.5
+Naazuk hai yeh, toot jaata hai ~3.5
+Sahiba, neende-veende aaye na ~3.5
+Raatein kaati jaaye na ~3.0
+Tera hi khayal din-rain aata hai ~5.0
 
-#Bridge
-Kaisi bhala, shab hogi woh
-Sang jo tere, dhalti hai
-Dil ko koi, khwahish nahi
-Teri kami, jaana, khalti hai
+#Bridge ~4.0
+Kaisi bhala, shab hogi woh ~4.0
+Sang jo tere, dhalti hai ~3.5
+Dil ko koi, khwahish nahi ~3.5
+Teri kami, jaana, khalti hai ~4.5
 
-Aaraam na ab aankhon ko
-Khwaab bhi na badalte hain
-Dil ko koi, chaahat nahi
-Teri kami, jaana, khalti hai
+Aaraam na ab aankhon ko ~4.0
+Khwaab bhi na badalte hain ~3.5
+Dil ko koi, chaahat nahi ~3.5
+Teri kami, jaana, khalti hai ~5.0
 
-#Outro
-Sahiba, tu hi mera aayina
-Haathon mein bhi mere, haan
-Tera hi naseeb aata hai
+#Outro ~4.0
+Sahiba, tu hi mera aayina ~3.5
+Haathon mein bhi mere, haan ~3.0
+Tera hi naseeb aata hai ~4.5
 
-Sahiba, neende-veende aaye na
-Raatein kaati jaaye na
-Tera hi khayal din-rain aata hai
-Sahiba, neende-veende aaye na
-Raatein kaati jaaye na
+Sahiba, neende-veende aaye na ~3.5
+Raatein kaati jaaye na ~3.0
+Tera hi khayal din-rain aata hai ~4.0
+Sahiba, neende-veende aaye na ~3.5
+Raatein kaati jaaye na ~4.0
 """
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -80,7 +80,7 @@ Raatein kaati jaaye na
 def main():
     lines = LYRICS.strip().split('\n')
     print_header(SONG_TITLE, SONG_ARTIST, theme=THEME)
-    print_lyrics(lines, style='fade', line_delay=1.1, theme=THEME)
+    print_lyrics(lines, style='fade', line_delay=3.0, theme=THEME)
     print_footer(theme=THEME)
 
 
